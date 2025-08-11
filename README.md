@@ -1,4 +1,3 @@
-# CVP Lite Backend
 
 ## Features
 - FastAPI backend with Swagger UI and ReDoc documentation

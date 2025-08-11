@@ -42,9 +42,9 @@ CVP Lite is a comprehensive Career Vision Program that provides AI-powered caree
 
 ### Prerequisites
 - Python 3.8+
-- MongoDB (local or cloud)
+- MongoDB 
 - OpenAI API key
-- Pinecone API key (optional)
+- Pinecone API key 
 
 ### Installation
 

@@ -14,7 +14,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 async def test_models():
     """Test that all models can be imported and instantiated"""
-    print("🧪 Testing Models...")
+    print("Testing Models...")
     
     try:
         from models.session_models import (
@@ -40,16 +40,16 @@ async def test_models():
             step_type=StepType.PROFILE_SETUP
         )
         
-        print("✅ Models test passed")
+        print(" Models test passed")
         return True
         
     except Exception as e:
-        print(f"❌ Models test failed: {e}")
+        print(f" Models test failed: {e}")
         return False
 
 async def test_services():
     """Test that all services can be imported and basic functions work"""
-    print("🧪 Testing Services...")
+    print("Testing Services...")
     
     try:
         # Test CVP Step Content
@@ -100,7 +100,7 @@ async def test_services():
         return True
         
     except Exception as e:
-        print(f"❌ Services test failed: {e}")
+        print(f"Services test failed: {e}")
         return False
 
 async def test_ai_mentor():
@@ -137,12 +137,12 @@ async def test_ai_mentor():
         return True
         
     except Exception as e:
-        print(f"❌ AI Mentor test failed: {e}")
+        print(f" AI Mentor test failed: {e}")
         return False
 
 async def test_configuration():
     """Test configuration loading"""
-    print("🧪 Testing Configuration...")
+    print("Testing Configuration...")
     
     try:
         from app_config import settings
@@ -154,16 +154,16 @@ async def test_configuration():
         assert hasattr(settings, 'MONGO_URI')
         assert hasattr(settings, 'MAX_STEPS')
         
-        print(f"✅ Configuration test passed - API Title: {settings.API_TITLE}")
+        print(f" Configuration test passed - API Title: {settings.API_TITLE}")
         return True
         
     except Exception as e:
-        print(f"❌ Configuration test failed: {e}")
+        print(f" Configuration test failed: {e}")
         return False
 
 async def test_database_client():
     """Test database client (without actual connection)"""
-    print("🧪 Testing Database Client...")
+    print(" Testing Database Client...")
     
     try:
         from db.mongo_client import (
@@ -178,16 +178,16 @@ async def test_database_client():
         assert callable(get_assessments)
         assert callable(get_career_domains)
         
-        print("✅ Database client test passed")
+        print("Database client test passed")
         return True
         
     except Exception as e:
-        print(f"❌ Database client test failed: {e}")
+        print(f" Database client test failed: {e}")
         return False
 
 async def test_openai_client():
     """Test OpenAI client (without actual API calls)"""
-    print("🧪 Testing OpenAI Client...")
+    print("Testing OpenAI Client...")
     
     try:
         from services.openai_client import (
@@ -200,16 +200,16 @@ async def test_openai_client():
         assert callable(generate_assessment_analysis)
         assert callable(generate_career_recommendations)
         
-        print("✅ OpenAI client test passed")
+        print("OpenAI client test passed")
         return True
         
     except Exception as e:
-        print(f"❌ OpenAI client test failed: {e}")
+        print(f" OpenAI client test failed: {e}")
         return False
 
 async def test_pinecone_client():
     """Test Pinecone client (without actual connection)"""
-    print("🧪 Testing Pinecone Client...")
+    print(" Testing Pinecone Client...")
     
     try:
         from services.pinecone_client import (
@@ -224,16 +224,16 @@ async def test_pinecone_client():
         assert callable(upsert_knowledge_vectors)
         assert callable(search_knowledge)
         
-        print("✅ Pinecone client test passed")
+        print(" Pinecone client test passed")
         return True
         
     except Exception as e:
-        print(f"❌ Pinecone client test failed: {e}")
+        print(f" Pinecone client test failed: {e}")
         return False
 
 async def test_controller():
     """Test session controller (without database operations)"""
-    print("🧪 Testing Session Controller...")
+    print(" Testing Session Controller...")
     
     try:
         from controllers.session_controller import SessionController
@@ -248,16 +248,16 @@ async def test_controller():
         next_step = SessionController._get_next_step(StepType.PROFILE_SETUP, None)
         assert next_step == StepType.INTERESTS_STRENGTHS
         
-        print("✅ Session controller test passed")
+        print(" Session controller test passed")
         return True
         
     except Exception as e:
-        print(f"❌ Session controller test failed: {e}")
+        print(f" Session controller test failed: {e}")
         return False
 
 async def test_routes():
     """Test that routes can be imported"""
-    print("🧪 Testing Routes...")
+    print(" Testing Routes...")
     
     try:
         from routes.session_routes import router
@@ -273,16 +273,16 @@ async def test_routes():
         assert "/progress" in routes
         assert "/report" in routes
         
-        print("✅ Routes test passed")
+        print(" Routes test passed")
         return True
         
     except Exception as e:
-        print(f"❌ Routes test failed: {e}")
+        print(f" Routes test failed: {e}")
         return False
 
 async def test_main_app():
     """Test main app configuration"""
-    print("🧪 Testing Main App...")
+    print("Testing Main App...")
     
     try:
         from app_main import app
@@ -293,16 +293,16 @@ async def test_main_app():
         # Check app metadata
         assert app.title == "CVP Lite - AI Mentor Backend"
         
-        print("✅ Main app test passed")
+        print(" Main app test passed")
         return True
         
     except Exception as e:
-        print(f"❌ Main app test failed: {e}")
+        print(f" Main app test failed: {e}")
         return False
 
 async def run_all_tests():
     """Run all tests and report results"""
-    print("🚀 Starting CVP Lite System Tests...")
+    print("Starting CVP Lite System Tests...")
     print("=" * 50)
     
     tests = [
@@ -324,26 +324,26 @@ async def run_all_tests():
             result = await test()
             results.append(result)
         except Exception as e:
-            print(f"❌ Test {test.__name__} crashed: {e}")
+            print(f" Test {test.__name__} crashed: {e}")
             results.append(False)
         print()
     
     # Summary
     print("=" * 50)
-    print("📊 Test Results Summary")
+    print("Test Results Summary")
     print("=" * 50)
     
     passed = sum(results)
     total = len(results)
     
-    print(f"✅ Passed: {passed}/{total}")
-    print(f"❌ Failed: {total - passed}/{total}")
+    print(f"Passed: {passed}/{total}")
+    print(f" Failed: {total - passed}/{total}")
     
     if passed == total:
-        print("🎉 All tests passed! The CVP Lite system is ready to run.")
+        print(" All tests passed! The CVP Lite system is ready to run.")
         return True
     else:
-        print("⚠️  Some tests failed. Please check the errors above.")
+        print("  Some tests failed. Please check the errors above.")
         return False
 
 def main():
@@ -353,18 +353,18 @@ def main():
         result = asyncio.run(run_all_tests())
         
         if result:
-            print("\n🚀 System is ready! You can now run:")
+            print("\n System is ready! You can now run:")
             print("uvicorn app_main:app --reload")
             print("\nThen visit: http://localhost:8000/docs")
         else:
-            print("\n❌ System has issues that need to be resolved.")
+            print("\n System has issues that need to be resolved.")
             sys.exit(1)
             
     except KeyboardInterrupt:
-        print("\n\n⏹️  Tests interrupted by user")
+        print("\n\n Tests interrupted by user")
         sys.exit(1)
     except Exception as e:
-        print(f"\n💥 Unexpected error: {e}")
+        print(f"\n Unexpected error: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":
